@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-neutral shadow-sm fixed top-0 z-30">
+    <div className="navbar bg-neutral shadow-sm sticky top-0 z-30">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
           Pearl Vibe
@@ -78,10 +78,10 @@ const Header = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a className="justify-between">
+              <Link to="/profile" className="justify-between">
                 Profile
                 <span className="badge">New</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a>Settings</a>

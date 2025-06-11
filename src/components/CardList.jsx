@@ -10,7 +10,7 @@ const CardList = ({ data, buttonType }) => {
     dispatch(removeItem(index))
   }
   return (
-    <div className="p-2 flex flex-wrap mt-20">
+    <div className="p-2 flex flex-wrap">
       {data.map((product, index) => (
         <div key={index} className="card bg-base-100 w-94 shadow-sm my-5">
           <figure>

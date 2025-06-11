@@ -1,6 +1,6 @@
 const Login = () => {
   return (
-    <div className='mt-20'>Login</div>
+    <div className=''>Login</div>
   )
 }
 

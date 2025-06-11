@@ -11,7 +11,7 @@ const Cart = () => {
   };
 
   return products && products.length > 0 ? (
-    <div className="mt-20">
+    <div>
       <CardList data={products} buttonType="Remove"/>
     </div>
   ) : (
