@@ -1,26 +1,25 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Header = () => {
+  const [searchValue, setSearchValue] = useState("");
   const productInStore = useSelector((store) => store.product.productItems);
   const totalPrice = productInStore.reduce((acc, item) => acc + item.price, 0);
   const navigate = useNavigate();
 
   const cartPage = () => {
-    navigate("/cart")
-  }
+    navigate("/cart");
+  };
 
   return (
     <div className="navbar bg-neutral shadow-sm fixed top-0 z-30">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Pearl Vibe</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          Pearl Vibe
+        </Link>
       </div>
       <div className="flex gap-2">
-        <input
-          type="text"
-          placeholder="Search"
-          className="input input-bordered w-24 md:w-auto mr-3"
-        />
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -48,10 +47,15 @@ const Header = () => {
             className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow"
           >
             <div className="card-body">
-              <span className="text-lg font-bold">{productInStore.length}</span>
-              <span className="text-info">Subtotal: ${totalPrice}</span>
+              <span className="text-lg font-bold">Total Items: {productInStore.length}</span>
+              <span className="text-info">Subtotal: ₹ {totalPrice}</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block" onClick={cartPage}>View cart</button>
+                <button
+                  className="btn btn-primary btn-block"
+                  onClick={cartPage}
+                >
+                  View cart
+                </button>
               </div>
             </div>
           </div>
