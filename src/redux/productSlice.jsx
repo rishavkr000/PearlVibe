@@ -9,8 +9,11 @@ const productSlice = createSlice({
     addProduct: (state, action) => {
       state.productItems.push(action.payload);
     },
+    removeItem: (state, action) => {
+      state.productItems.splice(action.payload, 1)
+    }
   },
 });
 
-export const { addProduct } = productSlice.actions;
+export const { addProduct, removeItem } = productSlice.actions;
 export default productSlice.reducer;

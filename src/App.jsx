@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Home from "./components/Home";
 import { Provider } from "react-redux";
 import appStore from "./redux/appStore";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
+              <Route index element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/cart" element={<Cart />} />
             </Route>
           </Routes>
         </BrowserRouter>
