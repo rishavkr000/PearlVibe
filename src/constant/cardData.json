@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Kashmiri White Pearl Mala",
+    "img": "https://picsum.photos/200/300?random=1",
+    "description": "Handcrafted white pearl mala with a traditional Kashmiri touch.",
+    "price": 799
+  },
+  {
+    "name": "Rajasthani Multicolor Beaded Mala",
+    "img": "https://picsum.photos/200/300?random=2",
+    "description": "Vibrant multicolor moti mala inspired by Rajasthani folk art.",
+    "price": 899
+  },
+  {
+    "name": "Golden Glow Bridal Mala",
+    "img": "https://picsum.photos/200/300?random=3",
+    "description": "Elegant golden moti mala designed for bridal wear.",
+    "price": 1299
+  },
+  {
+    "name": "Boho Chic Layered Pearl Mala",
+    "img": "https://picsum.photos/200/300?random=4",
+    "description": "Fusion-style moti mala with a bohemian twist.",
+    "price": 649
+  },
+  {
+    "name": "Classic South Sea Pearl Strand",
+    "img": "https://picsum.photos/200/300?random=5",
+    "description": "Luxurious strand made from South Sea pearls.",
+    "price": 1499
+  },
+  {
+    "name": "Minimalist Single Pearl Chain",
+    "img": "https://picsum.photos/200/300?random=6",
+    "description": "A simple, everyday wear moti chain.",
+    "price": 499
+  },
+  {
+    "name": "Temple Red Pearl Choker",
+    "img": "https://picsum.photos/200/300?random=7",
+    "description": "Traditional choker with deep red pearls.",
+    "price": 799
+  },
+  {
+    "name": "Vintage Rose Pearl Garland",
+    "img": "https://picsum.photos/200/300?random=8",
+    "description": "Vintage-inspired mala with a soft rose tint.",
+    "price": 999
+  },
+  {
+    "name": "Rajwadi Pearl Rani Haar",
+    "img": "https://picsum.photos/200/300?random=9",
+    "description": "Heavy royal-style Rani Haar with moti strands.",
+    "price": 1799
+  },
+  {
+    "name": "Dual-Tone Pearl Mala",
+    "img": "https://picsum.photos/200/300?random=10",
+    "description": "A stylish mala with white and pink pearls.",
+    "price": 849
+  },
+  {
+    "name": "Ocean Blue Beaded Necklace",
+    "img": "https://picsum.photos/200/300?random=11",
+    "description": "Blue pearls hand-threaded with intricate beads.",
+    "price": 899
+  },
+  {
+    "name": "Lavender Bloom Pearl Mala",
+    "img": "https://picsum.photos/200/300?random=12",
+    "description": "A delicate lavender moti mala for subtle style.",
+    "price": 749
+  },
+  {
+    "name": "Ethnic Red-Gold Pearl Set",
+    "img": "https://picsum.photos/200/300?random=13",
+    "description": "Perfect for weddings and festivals.",
+    "price": 1399
+  },
+  {
+    "name": "Peacock Inspired Pearl Necklace",
+    "img": "https://picsum.photos/200/300?random=14",
+    "description": "Designed with colors of a peacock and pearls.",
+    "price": 1049
+  },
+  {
+    "name": "Antique Bronze Pearl String",
+    "img": "https://picsum.photos/200/300?random=15",
+    "description": "Antique finish moti mala for ethnic outfits.",
+    "price": 899
+  },
+  {
+    "name": "Sundarika Pink Pearl Garland",
+    "img": "https://picsum.photos/200/300?random=16",
+    "description": "Hand-knotted pink pearls in a soft finish.",
+    "price": 849
+  },
+  {
+    "name": "Daily Wear White Pearl Mala",
+    "img": "https://picsum.photos/200/300?random=17",
+    "description": "Lightweight, simple design for daily wear.",
+    "price": 499
+  },
+  {
+    "name": "Royal Blue Kundan-Pearl Mix",
+    "img": "https://picsum.photos/200/300?random=18",
+    "description": "Kundan stones with pearl string – regal look.",
+    "price": 1599
+  },
+  {
+    "name": "Floral Motif Pearl Necklace",
+    "img": "https://picsum.photos/200/300?random=19",
+    "description": "Floral design centerpiece with pearls all over.",
+    "price": 1249
+  },
+  {
+    "name": "Graceful White Pearl Haar",
+    "img": "https://picsum.photos/200/300?random=20",
+    "description": "Timeless classic white pearl long haar.",
+    "price": 999
+  }
+]
