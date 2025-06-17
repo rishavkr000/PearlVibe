@@ -1,16 +1,29 @@
+import axios from "axios";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
+import { removeUser } from "../redux/userSlice";
 
 const Header = () => {
   const productInStore = useSelector((store) => store.product.productItems);
   const totalPrice = productInStore.reduce((acc, item) => acc + item.price, 0);
   const navigate = useNavigate();
   const userData = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   const cartPage = () => {
     navigate("/cart");
   };
+
+  const handleLogout = async () => {
+    try {
+      await axios.get(import.meta.env.VITE_BACKEND_URL + "/logout", {withCredentials: true})
+      dispatch(removeUser());
+      navigate("/login")
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
 
   return (
     <div className="navbar bg-neutral shadow-sm sticky top-0 z-30">
@@ -87,7 +100,7 @@ const Header = () => {
               <a>Settings</a>
             </li>
             <li>
-              <Link to="/login">Logout</Link>
+              <a onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </div>

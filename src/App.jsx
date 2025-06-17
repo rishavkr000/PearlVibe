@@ -14,8 +14,8 @@ function App() {
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
-              <Route index element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login isLoginForm={true} />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/cart" element={<Cart />} />
             </Route>

@@ -28,14 +28,15 @@ const Login = () => {
   };
   const handleRegister = async () => {
     try {
-      const data = await axios.post("http://localhost:3000/signUp", {
+      const data = await axios.post(import.meta.env.VITE_BACKEND_URL + "/signUp", {
         firstName,
         lastName,
         emailId,
         password,
         confirmPassword
       }, {withCredentials: true});
-      console.log(data)
+      dispatch(addUser(data.data.data));
+      navigate("/")
     } catch (err) {
       console.log(err.message);
     }
