@@ -10,13 +10,6 @@ import { useNavigate } from "react-router";
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
-
   const fetchUser = async () => {
     try {
       const res = await axios.get(
@@ -25,14 +18,14 @@ const Body = () => {
       );
       dispatch(addUser(res.data.data));
     } catch (err) {
-      console.log(err.message);
+      if(err.response.status == 401){
+        navigate("/login")
+      }
     }
   };
 
   useEffect(() => {
-    if (user) {
-      fetchUser();
-    }
+    fetchUser();
   }, []);
 
   return (

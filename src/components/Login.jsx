@@ -7,38 +7,68 @@ import { useNavigate } from "react-router";
 const Login = () => {
   const [emailId, setEmail] = useState("rishav@gmail.com");
   const [password, setPassword] = useState("Rishav@123");
-  const [confirmPassword, setConfirmPassword] = useState("Rishav@123")
+  const [confirmPassword, setConfirmPassword] = useState("Rishav@123");
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [firstName, setFirstName] = useState("Rishav");
   const [lastName, setLastName] = useState("Kumar");
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setError("");
     try {
-      const data = await axios.post(import.meta.env.VITE_BACKEND_URL + "/signIn", {
-        emailId,
-        password,
-      }, {withCredentials: true});
+      const data = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/signIn",
+        {
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
       dispatch(addUser(data.data.data));
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      console.log(err.message);
+      setError(err.response.data.message);
     }
   };
   const handleRegister = async () => {
+    setError("");
     try {
-      const data = await axios.post(import.meta.env.VITE_BACKEND_URL + "/signUp", {
-        firstName,
-        lastName,
-        emailId,
-        password,
-        confirmPassword
-      }, {withCredentials: true});
+      const data = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/signUp",
+        {
+          firstName,
+          lastName,
+          emailId,
+          password,
+          confirmPassword,
+        },
+        { withCredentials: true }
+      );
       dispatch(addUser(data.data.data));
-      navigate("/")
+      navigate("/");
     } catch (err) {
-      console.log(err.message);
+      if (
+        err.response.data.message == "Error:User validation failed: firstName: Path `firstName` is required."
+      ) {
+        setError("First Name is required");
+      } else if (err.response.data.message == "User already exists") {
+        setError("Email already register");
+      } else if (err.response.data.message == "Error:Please provide all the required fields") {
+        setError("Please provide all the required fields")
+      } else if (err.response.data.message == "Error:Passwords do not match") {
+        setError("Passwords do not match")
+      } else if (err.response.data.message == "Error:Password must be at least 8 characters and include symbols") {
+        setError("Password must be at least 8 characters and include symbols")
+      } else if (err.response.data.message == "Error:Email Id is not valid") {
+        setError("Email Id is not valid")
+      } else {
+        setError(err.response.data.message); 
+      }
+      console.log(err.response.data);
     }
   };
   return (
@@ -82,25 +112,40 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </fieldset>
-            <fieldset className="fieldset">
+            <fieldset className="fieldset relative">
               <legend className="fieldset-legend">Password</legend>
               <input
-                type="password"
-                className="input"
+                type={showPassword ? "text" : "password"}
+                className="input pr-10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 pr-5 z-10"
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </span>
             </fieldset>
-            {!isLoginForm && <fieldset className="fieldset">
-              <legend className="fieldset-legend">Password</legend>
-              <input
-                type="password"
-                className="input"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </fieldset>}
+            {!isLoginForm && (
+              <fieldset className="fieldset relative">
+                <legend className="fieldset-legend">Password</legend>
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="input"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <span
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500 pr-5 z-10"
+                >
+                  {showConfirmPassword ? "🙈" : "👁️"}
+                </span>
+              </fieldset>
+            )}
           </div>
+          <div className="text-red-500">{error}</div>
           {isLoginForm ? (
             <div className="card-actions justify-center my-4">
               <button className="btn btn-primary" onClick={handleLogin}>

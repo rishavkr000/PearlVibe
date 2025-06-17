@@ -6,6 +6,7 @@ import { removeUser } from "../redux/userSlice";
 
 const Header = () => {
   const productInStore = useSelector((store) => store.product.productItems);
+  const user = useSelector(state => state.user)
   const totalPrice = productInStore.reduce((acc, item) => acc + item.price, 0);
   const navigate = useNavigate();
   const userData = useSelector(state => state.user);
@@ -25,12 +26,20 @@ const Header = () => {
     }
   }
 
+  const handleNameClick = () => {
+    if(!user) {
+      navigate("/login")
+    } else {
+      navigate("/")
+    }
+  }
+
   return (
     <div className="navbar bg-neutral shadow-sm sticky top-0 z-30">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
+        <a onClick={handleNameClick} className="btn btn-ghost text-xl">
           Pearl Vibe
-        </Link>
+        </a>
       </div>
       {userData && <div className="flex gap-2">
         <div className="dropdown dropdown-end">
