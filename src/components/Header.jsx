@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 
 const Header = () => {
-  const [searchValue, setSearchValue] = useState("");
   const productInStore = useSelector((store) => store.product.productItems);
   const totalPrice = productInStore.reduce((acc, item) => acc + item.price, 0);
   const navigate = useNavigate();
+  const userData = useSelector(state => state.user);
 
   const cartPage = () => {
     navigate("/cart");
@@ -19,7 +19,7 @@ const Header = () => {
           Pearl Vibe
         </Link>
       </div>
-      <div className="flex gap-2">
+      {userData && <div className="flex gap-2">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -68,8 +68,8 @@ const Header = () => {
           >
             <div className="w-10 rounded-full">
               <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                alt="User Photo"
+                src={userData?.photoUrl}
               />
             </div>
           </div>
@@ -87,11 +87,11 @@ const Header = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <Link to="/login">Logout</Link>
             </li>
           </ul>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
