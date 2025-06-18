@@ -52,21 +52,28 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       if (
-        err.response.data.message == "Error:User validation failed: firstName: Path `firstName` is required."
+        err.response.data.message ==
+        "Error:User validation failed: firstName: Path `firstName` is required."
       ) {
         setError("First Name is required");
       } else if (err.response.data.message == "User already exists") {
         setError("Email already register");
-      } else if (err.response.data.message == "Error:Please provide all the required fields") {
-        setError("Please provide all the required fields")
+      } else if (
+        err.response.data.message ==
+        "Error:Please provide all the required fields"
+      ) {
+        setError("Please provide all the required fields");
       } else if (err.response.data.message == "Error:Passwords do not match") {
-        setError("Passwords do not match")
-      } else if (err.response.data.message == "Error:Password must be at least 8 characters and include symbols") {
-        setError("Password must be at least 8 characters and include symbols")
+        setError("Passwords do not match");
+      } else if (
+        err.response.data.message ==
+        "Error:Password must be at least 8 characters and include symbols"
+      ) {
+        setError("Password must be at least 8 characters and include symbols");
       } else if (err.response.data.message == "Error:Email Id is not valid") {
-        setError("Email Id is not valid")
+        setError("Email Id is not valid");
       } else {
-        setError(err.response.data.message); 
+        setError(err.response.data.message);
       }
       console.log(err.response.data);
     }
@@ -164,7 +171,9 @@ const Login = () => {
               <p>Don't have an account?</p>
               <p
                 className="text-blue-600 cursor-pointer"
-                onClick={() => setIsLoginForm((value) => !value)}
+                onClick={() => {
+                  setError(""), setIsLoginForm((value) => !value);
+                }}
               >
                 Sign Up
               </p>
@@ -174,7 +183,9 @@ const Login = () => {
               <p>Already have an account?</p>
               <p
                 className="text-blue-600 cursor-pointer"
-                onClick={() => setIsLoginForm((value) => !value)}
+                onClick={() => {
+                  setError(""), setIsLoginForm((value) => !value);
+                }}
               >
                 Login
               </p>
