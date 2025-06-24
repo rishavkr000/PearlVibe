@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import { Provider } from "react-redux";
 import appStore from "./redux/appStore";
 import Cart from "./components/Cart";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/login" element={<Login isLoginForm={true} />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/contact" element={<Contact />} />
             </Route>
           </Routes>
         </BrowserRouter>
