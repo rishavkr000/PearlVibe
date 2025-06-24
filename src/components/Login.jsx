@@ -5,12 +5,12 @@ import { addUser } from "../redux/userSlice";
 import { useNavigate } from "react-router";
 
 const Login = () => {
-  const [emailId, setEmail] = useState("rishav@gmail.com");
-  const [password, setPassword] = useState("Rishav@123");
-  const [confirmPassword, setConfirmPassword] = useState("Rishav@123");
+  const [emailId, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoginForm, setIsLoginForm] = useState(true);
-  const [firstName, setFirstName] = useState("Rishav");
-  const [lastName, setLastName] = useState("Kumar");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
