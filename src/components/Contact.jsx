@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -165,7 +165,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
 };

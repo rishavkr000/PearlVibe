@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import appStore from "./redux/appStore";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
             </Route>
           </Routes>
+          <ToastContainer position="top-right" autoClose={2000} />
         </BrowserRouter>
       </Provider>
     </>

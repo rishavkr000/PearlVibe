@@ -12,9 +12,9 @@ const CardList = ({ data, buttonType }) => {
   return (
     <div className="p-2 flex flex-wrap">
       {data.map((product, index) => (
-        <div key={index} className="card bg-base-100 w-94 shadow-sm my-5">
+        <div key={index} className="card bg-base-100 w-110 shadow-sm my-5">
           <figure>
-            <img src={product.img} alt={product.name} className="w-85 h-40" />
+            <img src={product.img} alt={product.name} className="w-100 h-50" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">{product.name}</h2>

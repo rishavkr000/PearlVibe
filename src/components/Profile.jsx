@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/userSlice";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import ChangePassword from "./ChangePassword";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
@@ -13,6 +14,7 @@ const Profile = () => {
   const [emailId, setEmailId] = useState(user?.emailId || "");
   const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber || "");
   const [error, setError] = useState("");
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -76,6 +78,10 @@ const Profile = () => {
     }
   };
 
+  const handleChangePassword = () => {
+    setShowChangePassword(true);
+  };
+
   return (
     <div className="flex justify-center px-4">
       <div className="card bg-base-300 w-full max-w-3xl mt-10 shadow-sm p-5">
@@ -134,11 +140,19 @@ const Profile = () => {
         </div>
         <div className="mx-6 pt-4 text-red-500">{error}</div>
         <div className="mx-6 my-10">
-          <h1 className="mb-5 text-blue-500 cursor-pointer">Change Password</h1>
+          <h1
+            className="mb-5 text-blue-500 cursor-pointer"
+            onClick={handleChangePassword}
+          >
+            Change Password
+          </h1>
           <h1 className="text-red-500 cursor-pointer">Deactivate Account</h1>
         </div>
+        <ChangePassword
+          isOpen={showChangePassword}
+          onClose={() => setShowChangePassword(false)}
+        />
       </div>
-      <ToastContainer />
     </div>
   );
 };
