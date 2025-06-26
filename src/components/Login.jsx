@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [emailId, setEmail] = useState("");
@@ -28,6 +29,14 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+
+      // 🔔 Show toast only if user was deactivated
+      if (data?.data?.wasDeactivated) {
+        toast.success("Welcome back! Your account has been reactivated.");
+      } else {
+        toast.success("Login successful!");
+      }
+
       dispatch(addUser(data.data.data));
       navigate("/");
     } catch (err) {
