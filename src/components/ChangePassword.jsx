@@ -18,7 +18,7 @@ const ChangePassword = ({ isOpen, onClose }) => {
     }
 
     try {
-      const data = await axios.post(
+      await axios.post(
         import.meta.env.VITE_BACKEND_URL + "/changePassword",
         {
           oldPassword,
@@ -27,10 +27,10 @@ const ChangePassword = ({ isOpen, onClose }) => {
         },
         { withCredentials: true }
       );
-      toast("Password updated successfully");
+      toast.success("Password updated successfully");
       setTimeout(() => {
         onClose();
-      }, 5000);
+      }, 2000);
     } catch (err) {
       setError(err?.response?.data?.msg || "Something went wrong");
     }

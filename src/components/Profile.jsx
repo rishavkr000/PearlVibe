@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../redux/userSlice";
 import { toast } from "react-toastify";
 import ChangePassword from "./ChangePassword";
+import DeactivateAccount from "./DeactivateAccount";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
@@ -15,6 +16,7 @@ const Profile = () => {
   const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber || "");
   const [error, setError] = useState("");
   const [showChangePassword, setShowChangePassword] = useState(false);
+  const [showDeactivateAccount, setShowDeactivateAccount] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -82,6 +84,10 @@ const Profile = () => {
     setShowChangePassword(true);
   };
 
+  const handleDeactivateAccount = () => {
+    setShowDeactivateAccount(true);
+  };
+
   return (
     <div className="flex justify-center px-4">
       <div className="card bg-base-300 w-full max-w-3xl mt-10 shadow-sm p-5">
@@ -146,11 +152,20 @@ const Profile = () => {
           >
             Change Password
           </h1>
-          <h1 className="text-red-500 cursor-pointer">Deactivate Account</h1>
+          <h1
+            className="text-red-500 cursor-pointer"
+            onClick={handleDeactivateAccount}
+          >
+            Deactivate Account
+          </h1>
         </div>
         <ChangePassword
           isOpen={showChangePassword}
           onClose={() => setShowChangePassword(false)}
+        />
+        <DeactivateAccount
+          isOpen={showDeactivateAccount}
+          onClose={() => setShowDeactivateAccount(false)}
         />
       </div>
     </div>
