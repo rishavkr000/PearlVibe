@@ -7,7 +7,7 @@ const productSlice = createSlice({
   },
   reducers: {
     addProduct: (state, action) => {
-      state.productItems.push(action.payload);
+      state.productItems = action.payload;
     },
     removeItem: (state, action) => {
       state.productItems.splice(action.payload, 1)

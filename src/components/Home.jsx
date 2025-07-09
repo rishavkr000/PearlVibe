@@ -1,15 +1,16 @@
 import CardList from "./CardList";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { addProduct } from "../redux/productSlice";
 
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [products, setProducts] = useState([]);
-  const [setChecking] = useState(true);
-  console.log(user);
+  const [checking, setChecking] = useState(true);
+  const products = useSelector((store) => store.product.productItems)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,14 +32,16 @@ const Home = () => {
             withCredentials: true,
           }
         );
-        setProducts(res?.data?.data || []);
+        dispatch(addProduct(res?.data?.data))
       } catch (err) {
         console.log("Error fetching products:", err.message);
       }
     };
 
-    fetchProducts();
-  }, []);
+    if(products.length == 0) {
+      fetchProducts();
+    }
+  }, [dispatch, products.length]);
 
   return (
     <div>
