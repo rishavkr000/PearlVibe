@@ -5,16 +5,20 @@ import { useState } from "react";
 const CardList = ({ data, buttonType }) => {
   const dispatch = useDispatch();
   const [selectedImage, setSelectedImage] = useState(null);
+
   const handleAddToCart = (product) => {
     dispatch(addProduct(product));
   };
+
   const handleRemoveFromCart = (index) => {
     dispatch(removeItem(index));
   };
+
   const handleImageClick = (img) => {
     setSelectedImage(img);
     document.getElementById("image_modal").showModal();
   };
+
   return (
     <>
       <div className="p-2 flex flex-wrap">
@@ -25,7 +29,7 @@ const CardList = ({ data, buttonType }) => {
           >
             <figure>
               <img
-                src={product.img}
+                src={product.productImage}
                 alt={product.name}
                 className="w-110 h-60 rounded-2xl cursor-pointer"
                 onClick={() => handleImageClick(product.img)}
